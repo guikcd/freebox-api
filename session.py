@@ -30,6 +30,8 @@ class Session(object):
 
                 if self.debug is True:
                     self.logger.setLevel(logging.DEBUG)
+
+	def login(self):
                 self.base_url = BASEURL
                 self.api_version = API_VERSION
                 self.ca_file = CA_FILE
@@ -63,7 +65,7 @@ class Session(object):
 	        	    return json.loads(result.text)['api_base_url']
 	        except Exception, e:
 	        	logging.error("Unexcepted error __get_api_base_url(): %s" % (e))
-	        	sys.exit(e)
+			return False
 
 	def __get_challenge(self):
 		try:
